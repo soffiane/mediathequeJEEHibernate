@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<query name="HQL_FIND_ABONNE_BY_ID">
+		<![CDATA[from Abonne where id_abonne = :id]]>
+	</query>
+	<query name="HQL_FIND_ABONNE_BY_EMAIL">
+		<![CDATA[from Abonne where email = :email]]>
+	</query>
+	<query name="HQL_GET_ALL_BOOKS">
+		<![CDATA[from Document]]>
+	</query>
+	<query name="HQL_GET_ALL_BOOKS_BY_AUTHOR">
+		<![CDATA[from Document where lower(auteur) like :author]]>
+	</query>
+	<query name="HQL_GET_BOOK_BY_ISBN">
+		<![CDATA[from Document where isbn = :isbn]]>
+	</query>
+	<query name="HQL_GET_BOOK_BY_ID">
+		<![CDATA[from Document where id = :id]]>
+	</query>
+	<query name="HQL_GET_EMPRUNTS_BY_ABONNE_ID">
+		<![CDATA[from Emprunt e where e.pk.abonne = :abonneId]]>
+	</query>
+	<query name="HQL_FIND_ALERTE_BY_IDS">
+		<![CDATA[from Alerte a where a.pk.abonne = :idAbonne and a.pk.document = :idLivre]]>
+	</query>
+	<query name="HQL_FIND_ALERTE_BY_BOOK_ID">
+		<![CDATA[from Alerte a where a.pk.document = :idLivre]]>
+	</query>
+	<query name="HQL_GET_ALL_BOROWED_BOOKS">
+		<![CDATA[from Emprunt]]>
+	</query>
+	<query name="HQL_GET_ALL_GENRE">
+		<![CDATA[from Genre]]>
+	</query>
+	<query name="HQL_FIND_ALL_ABONNES">
+		<![CDATA[from Abonne where role = 'user']]>
+	</query>
+	<query name="HQL_GET_CURRENT_ID">
+		<![CDATA[from Counter where name = :name]]>
+	</query>
+	<query name="HQL_UPDATE_CURRENT_ID">
+		<![CDATA[update Counter set nextId = :nextId where name = :name]]>
+	</query>
+</hibernate-mapping>
